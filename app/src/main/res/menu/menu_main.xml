@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
         android:id="@+id/action_nuevo_juego"
-        android:title="@string/text_new_game" />
+        android:title="@string/menu_nuevo_juego"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_jugar_online"
-        android:title="@string/text_play_online" />
+        android:title="@string/menu_jugar_online"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_ranking"
-        android:title="@string/text_hall_of_fame" />
+        android:title="@string/menu_ranking"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_salir"
-        android:title="@string/text_close" />
+        android:title="@string/menu_salir"
+        app:showAsAction="never" />
+
 </menu>

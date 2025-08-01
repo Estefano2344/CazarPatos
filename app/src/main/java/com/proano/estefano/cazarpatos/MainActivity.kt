@@ -31,6 +31,8 @@ import java.util.Locale
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 class MainActivity : AppCompatActivity() {
     private lateinit var textViewUser: TextView
@@ -51,6 +53,7 @@ class MainActivity : AppCompatActivity() {
     //private var interstitialAd: InterstitialAd? = null
     private var TAG = "MainActivity"
     private var interstitialAd: InterstitialAd? = null
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +69,7 @@ class MainActivity : AppCompatActivity() {
         textViewCounter = findViewById(R.id.textViewCounter)
         textViewTime = findViewById(R.id.textViewTime)
         imageViewDuck = findViewById(R.id.imageViewDuck)
+        auth = Firebase.auth
 
         MobileAds.initialize(this) {}
 
@@ -279,6 +283,8 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.action_salir -> {
+                auth.signOut()
+                Toast.makeText(this, "@string/text_CloseSesion", Toast.LENGTH_SHORT).show()
                 finish()
                 true
             }
@@ -410,7 +416,4 @@ class MainActivity : AppCompatActivity() {
             //Toast.makeText(this, "Ad did not load", Toast.LENGTH_SHORT).show()
         }
     }
-
-
-
 }

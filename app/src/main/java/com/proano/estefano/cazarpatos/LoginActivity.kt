@@ -68,8 +68,9 @@ class LoginActivity : AppCompatActivity() {
             //finish()
             AutenticarUsuario(email, clave)
         }
-        buttonNewUser.setOnClickListener{
-
+        buttonNewUser.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
         mediaPlayer=MediaPlayer.create(this, R.raw.title_screen)
         mediaPlayer.start()
@@ -152,7 +153,16 @@ class LoginActivity : AppCompatActivity() {
 //        Log.d("TAG", "EncriptedSharedPreferencesManager " + datoLeido.toList().toString())
 //    }
 
-
+    override fun onStart() {
+        super.onStart()
+        // Verificar si el usuario ya ha iniciado sesión
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra(EXTRA_LOGIN, currentUser.email)
+            startActivity(intent)
+        }
+    }
 
     override fun onDestroy() {
         mediaPlayer.release()
